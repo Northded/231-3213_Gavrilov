@@ -1,0 +1,17 @@
+@hostname = http://localhost:8000/
+
+
+
+# GET {{hostname}}/employee.get/23
+# Content-Type: application/json
+
+POST {{hostname}}/employee.create
+Content-Type: application/json
+
+{
+    "hire_date": "2023-05-10",
+    "position": "HR Manager",
+    "department": "Human Resources",
+    "employee_id": "HR002",
+    "is_on_leave": true
+}
