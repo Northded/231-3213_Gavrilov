@@ -8,3 +8,4 @@ class Employee(models.Model):
     department = models.CharField(max_length=50)
     employee_id = models.CharField(max_length=10, unique=True)
     is_on_leave = models.BooleanField(default=False)
+   
