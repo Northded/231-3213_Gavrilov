@@ -1,34 +1,47 @@
 name: lab2
 
 services:
+
+  nginx_service:
+    container_name: nginx_container
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    depends_on:
+      backend_service:
+        condition: service_started
+    volumes:
+      - staticfiles_volume:/staticfiles
+
   backend_service:
     container_name: backend_container
     image: backend_image
-    build:
+    build: 
       context: ./backend
       dockerfile: Dockerfile
-    command: > 
+    command: >
       sh -c "
-      python manage.py migrate --noinput &&
-      python manage.py runserver 0.0.0.0:8000
+      python manage.py migrate --no-input &&
+      python manage.py collectstatic --no-input &&
+      gunicorn lab1.wsgi:application --bind 0.0.0.0:8000
       "
-    ports:
-      - "8000:8000"
+    volumes:
+      - staticfiles_volume:/staticfiles
     depends_on:
       postgres_service:
         condition: service_healthy
-
+      
   postgres_service:
     container_name: postgres_container
     image: postgres:17-alpine
     environment:
-     - POSTGRES_USER=mrifdduf
-     - POSTGRES_DB=mydb
-     - POSTGRES_PASSWORD=5428
-    ports:
-      - "1234:5432"
+      - POSTGRES_USER=mrifdduf
+      - POSTGRES_DB=mydb
+      - POSTGRES_PASSWORD=5428
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready --username=$${POSTGRES_USER} --dbname=$${POSTGRES_DB}"]  #
+      test: ["CMD-SHELL", "pg_isready --username=$${POSTGRES_USER} --dbname=$${POSTGRES_DB}"]
       interval: 1s
       timeout: 1s
       retries: 10
@@ -36,5 +49,5 @@ services:
       - postgres_volume:/var/lib/postgresql/data
 
 volumes:
-  postgres_volume:    
+  postgres_volume:
   staticfiles_volume:

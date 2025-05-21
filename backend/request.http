@@ -1,41 +1,47 @@
+@hostname = http://localhost:8080
+@contentType = application/json
 
+### Получить всех сотрудников
+GET {{hostname}}/api/employees/
+Content-Type: {{contentType}}
 
+### Получить конкретного сотрудника
+GET {{hostname}}/api/employees/1/
+Content-Type: {{contentType}}
 
-@hostname = http://localhost:8000/
-
-
-GET {{hostname}}/employee.get/1
-Content-Type: application/json
-
-###
-GET {{hostname}}/employee.get
-Content-Type: application/json
-
-###update
-POST {{hostname}}/employee.update/1
-Content-Type: application/json
-
-{
-    "id": 1,
-    "hire_date": "2023-05-10",
-    "position": "Dir",
-    "department": "Human Resources",
-    "employee_id": "HR022",
-    "is_on_leave": true
-}
-
-###delete
-GET {{hostname}}/employee.delete/103
-Content-Type: application/json
-
-###create
-POST {{hostname}}/employee.create
-Content-Type: application/json
+### Создать нового сотрудника
+POST {{hostname}}/api/employees/
+Content-Type: {{contentType}}
 
 {
     "hire_date": "2023-05-10",
     "position": "HR Manager",
     "department": "Human Resources",
-    "employee_id": "HR002",
+    "employee_id": "HR02",
     "is_on_leave": true
 }
+
+### Полное обновление сотрудника 
+PUT {{hostname}}/api/employees/1/
+Content-Type: {{contentType}}
+
+{
+    "hire_date": "2023-05-10",
+    "position": "Director",
+    "department": "Human Resources",
+    "employee_id": "HR022",
+    "is_on_leave": false
+}
+
+### Частичное обновление сотрудника 
+PATCH {{hostname}}/api/employees/1/
+Content-Type: {{contentType}}
+
+{
+    "position": "Senior Director",
+    "is_on_leave": true
+}
+
+### Удалить сотрудника
+DELETE {{hostname}}/api/employees/1/
+Content-Type: {{contentType}}
