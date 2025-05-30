@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>MainWindow</class>
+  <widget class="QMainWindow" name="MainWindow">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>800</width>
+        <height>600</height>
+      </rect>
+    </property>
+    <widget class="QWidget" name="centralwidget">
+      <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+          <layout class="QHBoxLayout" name="controlsLayout">
+            <item>
+              <widget class="QPushButton" name="addButton">
+                <property name="text">
+                  <string>Добавить</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QPushButton" name="editButton">
+                <property name="text">
+                  <string>Изменить</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QLineEdit" name="idInput">
+                <property name="placeholderText">
+                  <string>Введите ID</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QPushButton" name="getByIdButton">
+                <property name="text">
+                  <string>Найти по ID</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QPushButton" name="getAllButton">
+                <property name="text">
+                  <string>Показать всех</string>
+                </property>
+              </widget>
+            </item>
+            <item>
+              <widget class="QPushButton" name="deleteButton">
+                <property name="text">
+                  <string>Удалить</string>
+                </property>
+              </widget>
+            </item>
+          </layout>
+        </item>
+        <item>
+          <widget class="QScrollArea" name="scrollArea">
+            <property name="widgetResizable">
+              <bool>true</bool>
+            </property>
+            <widget class="QWidget" name="scrollAreaWidgetContents">
+              <property name="geometry">
+                <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>774</width>
+                  <height>531</height>
+                </rect>
+              </property>
+              <layout class="QVBoxLayout" name="employeesLayout"/>
+            </widget>
+          </widget>
+        </item>
+      </layout>
+    </widget>
+  </widget>
+</ui>

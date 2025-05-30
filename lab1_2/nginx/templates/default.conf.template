@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    server_name _;
+
+    location /api/ {
+        proxy_pass http://backend_container:8000/api/;
+        proxy_set_header Host $host;
+    }
+
+    location /static/ {
+        alias /staticfiles/;
+    }
+}

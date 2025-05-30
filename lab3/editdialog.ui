@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+  <class>EditDialog</class>
+  <widget class="QDialog" name="EditDialog">
+    <property name="geometry">
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>400</width>
+        <height>350</height>
+      </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+        <layout class="QFormLayout" name="formLayout">
+          <item row="0" column="0">
+            <widget class="QLabel" name="positionLabel">
+              <property name="text">
+                <string>Должность:</string>
+              </property>
+            </widget>
+          </item>
+          <item row="0" column="1">
+            <widget class="QLineEdit" name="positionEdit"/>
+          </item>
+          <item row="1" column="0">
+            <widget class="QLabel" name="departmentLabel">
+              <property name="text">
+                <string>Отдел:</string>
+              </property>
+            </widget>
+          </item>
+          <item row="1" column="1">
+            <widget class="QLineEdit" name="departmentEdit"/>
+          </item>
+          <item row="2" column="0">
+            <widget class="QLabel" name="employeeIdLabel">
+              <property name="text">
+                <string>ID сотрудника:</string>
+              </property>
+            </widget>
+          </item>
+          <item row="2" column="1">
+            <widget class="QLineEdit" name="employeeIdEdit"/>
+          </item>
+          <item row="3" column="0">
+            <widget class="QLabel" name="hireDateLabel">
+              <property name="text">
+                <string>Дата приема:</string>
+              </property>
+            </widget>
+          </item>
+          <item row="3" column="1">
+            <widget class="QDateEdit" name="hireDateEdit"/>
+          </item>
+          <item row="4" column="0">
+            <widget class="QLabel" name="isOnLeaveLabel">
+              <property name="text">
+                <string>В отпуске:</string>
+              </property>
+            </widget>
+          </item>
+          <item row="4" column="1">
+            <widget class="QCheckBox" name="isOnLeaveCheckBox"/>
+          </item>
+        </layout>
+      </item>
+      <item>
+        <layout class="QHBoxLayout" name="buttonLayout">
+          <item>
+            <widget class="QPushButton" name="saveButton">
+              <property name="text">
+                <string>Сохранить</string>
+              </property>
+            </widget>
+          </item>
+          <item>
+            <widget class="QPushButton" name="cancelButton">
+              <property name="text">
+                <string>Отмена</string>
+              </property>
+            </widget>
+          </item>
+        </layout>
+      </item>
+    </layout>
+  </widget>
+  <resources/>
+  <connections/>
+</ui>
