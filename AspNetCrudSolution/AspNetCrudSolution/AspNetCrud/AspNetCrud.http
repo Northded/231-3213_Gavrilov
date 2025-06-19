@@ -1,0 +1,45 @@
+@hostname = http://localhost:5171
+@contentType = application/json
+
+### фоновая задача
+POST {{hostname}}/api/task
+Accept: {{contentType}}
+
+###проверка статуса задачи
+@taskId = f6049abc-9d2f-45cd-a1ac-2ba3941ae8b2
+GET {{hostname}}/api/task/{{taskId}}
+Accept: {{contentType}}
+
+###Получить всех
+GET {{hostname}}/api/employees
+Accept: {{contentType}}
+
+###Создать нового
+POST {{hostname}}/api/employees
+Content-Type: {{contentType}}
+
+{
+    "hireDate": "2023-05-10T00:00:00Z",
+    "terminationDate": null,
+    "position": "HR Manager",
+    "department": "Human Resources",
+    "employeeId": "HR02",
+    "isOnLeave": true
+}
+
+###Обновить 
+PUT {{hostname}}/api/employees/1
+Content-Type: {{contentType}}
+
+{
+    "id": 1,
+    "hireDate": "2023-05-10T00:00:00Z",
+    "terminationDate": null,
+    "position": "Director",
+    "department": "Human Resources",
+    "employeeId": "HR022",
+    "isOnLeave": false
+}
+
+###Удалить
+DELETE {{hostname}}/api/employees/1

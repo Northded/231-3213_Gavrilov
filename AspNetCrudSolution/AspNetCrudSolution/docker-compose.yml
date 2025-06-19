@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  web:
+    image: aspnetcrud
+    ports:
+      - "5171:5171"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=mydbb;Username=mrifdduf;Password=5428
+      - ASPNETCORE_URLS=http://*:5171
+      - DOTNET_SYSTEM_NET_HTTP_SOCKETSHTTPHANDLER_HTTP2UNENCRYPTEDSUPPORT=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: mrifdduf
+      POSTGRES_PASSWORD: 5428
+      POSTGRES_DB: mydbb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mrifdduf -d mydbb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - app-network
+
+volumes:
+  postgres-data:
+
+networks:
+  app-network:
+    driver: bridge
